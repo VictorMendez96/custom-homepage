@@ -7,9 +7,19 @@
 #reddit {
     overflow: auto; 
     max-height: 30rem;
-    color: #3a2b24;
 }
 
 #userButton {
    margin-left: 40%;
+}
+
+label {
+    font: 150%;
+    font-weight: bold;
+}
+
+.inst {
+    font: 150%;
+    font-weight: bold;
+    color: black;
 }

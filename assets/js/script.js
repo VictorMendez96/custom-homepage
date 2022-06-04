@@ -4,10 +4,10 @@ let bodyThemes = [
     // first element is background color, second element is reddit card color, third is font color, fourth is the button color 
     ["DFD6A7", "F7B05B", "1F1300", "AF9B46"], //sand
     ["48ACF0", "CCDDE2", "3a2b24", "93A3BC"], //blue
-    [], //green
-    [], //red
-    [], //dark
-    [] //light
+    ["8BB174", "426B69", "FFFFFF", "2A4849"], //green
+    ["DD6031", "8B728E", "FFFFFF", "570000"], //red
+    ["2E2E2E", "5A5A5A", "FFFFFF", "383838"], //dark
+    ["FFFFFF", "FFFFFF", "000000", "FFFFFF"] //light
 ]
 let musicVar = 0;let redditVar = 0;let locVar = 0;let remVar =0; let theme = [];
 let redditHolder = document.getElementById("reddit");
@@ -35,7 +35,8 @@ async function getImages(url){
         
         function fetchPosts() {
             var popular = `https://www.reddit.com/r/popular/hot.json`
-            
+            //empty container on new request
+            document.getElementById("reddit").innerHTML = ""
             
             fetch(popular)
             .then( function (response) {
