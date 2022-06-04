@@ -16,12 +16,15 @@ async function getImages(url){
 //  console.log(data)
 }
 
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> cd0d6ebe4d61baeb8303ba06ac56acbc771b1207
 // Begin reddit API
 // =================================================================
     // TODO: 
@@ -31,7 +34,11 @@ async function getImages(url){
         // - header
         
         function fetchPosts() {
+<<<<<<< HEAD
             var subreddit = `https://www.reddit.com/r/${redditVar}/hot.json`
+=======
+            var popular = `https://www.reddit.com/r/popular/hot.json`
+>>>>>>> cd0d6ebe4d61baeb8303ba06ac56acbc771b1207
             
             
             fetch(subreddit)
@@ -111,15 +118,24 @@ async function getImages(url){
             
         } })
     }
+<<<<<<< HEAD
     fetchPosts()
      
     
     // Begin 1st opening function
+=======
+
+// Begin 1st opening function
+>>>>>>> cd0d6ebe4d61baeb8303ba06ac56acbc771b1207
 function checkCustom() {
     userSettings = JSON.parse(localStorage.getItem("userSettings"));
     if (userSettings.remember != false) {
         console.log("made from past")
         console.log(userSettings)
+        redditVar = userSettings.subreddit;
+        locVar = userSettings.userLocation;
+        musicVar = userSettings.music;
+        remVar = userSettings.remember;
         setCustom()
     } else {
         document.getElementById("userButton").textContent = "Click me to begin!"
@@ -164,7 +180,6 @@ let clicked = () => {
         console.log("RedditVar: "+userSettings.subreddit);
         console.log("Remember: "+userSettings.remember)
         setCustom()
-        setPage()
     }
 }
 
@@ -190,5 +205,27 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(elems)
   });
 
+<<<<<<< HEAD
+=======
+
+  //document.getElementsByClassName("btn modal-close").addEventListener("click",function() {
+  var iheartplayer = document.getElementById('iheart');
+  var station = document.createElement('iframe');
+  station.width = "100%";
+  station.height = "200";
+  station.frameborder = "0";
+  station.src = `https://www.iheart.com/live/american-top-40-4802/?embed=true`;
+
+  //if (MusicVar == 0) {
+  //  station.src = "https://www.iheart.com/live/american-top-40-4802/?embed=true";
+  //} else {
+  //  station.src = "https://www.iheart.com/live/american-top-40-4802/?embed=true";
+  //}
+
+  
+  iheartplayer.appendChild(station);
+//})
+
+>>>>>>> cd0d6ebe4d61baeb8303ba06ac56acbc771b1207
   checkCustom()
 
