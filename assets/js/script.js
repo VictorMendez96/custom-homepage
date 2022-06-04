@@ -1,15 +1,4 @@
-<<<<<<< HEAD
 // console.log("Hello")
-=======
-let userSettings = {};
-let hasCustom = false;
-let content = document.getElementById("content")
-let musicVar = 0;
-
-
-
-console.log("Hello")
->>>>>>> 2fc586640e3d5ece669356d422d610cb1415b5d5
 const ACCESS_KEY="zUKzVL4c5dObj5yu1C3ByefuPOrEwxcejeM0DtyoccA"
 const URL=`https://api.unsplash.com/photos/?client_id=${ACCESS_KEY}`
 async function getImages(url){
@@ -19,7 +8,6 @@ async function getImages(url){
 }
 getImages(URL)
 
-<<<<<<< HEAD
 
 function fetchPosts() {
 var popular = "https://www.reddit.com/r/popular/hot.json"
@@ -39,12 +27,7 @@ fetch(popular)
             // Creates card contianer and sets card attribute
             // ================================================
             var contentCard = document.createElement("div")
-            contentCard.classList.add("card")
-            
-            
-
-
-            
+            contentCard.classList.add("card")            
                         
             // creates image div and attributes
             // ================================
@@ -103,65 +86,3 @@ fetch(popular)
     // div.appendChild(h4)
     // div.appendChild(image)
     // parentdiv.appendChild(div)
-=======
-// Begin 1st opening function
-function checkCustom() {
-    if (localStorage.getItem("hasCustom") != false) {
-        userSettings = localStorage.getItem("userSettings");
-    } else {
-        userSettings = {
-            subreddit: "popular",
-            userLocation: "New York City",
-            soundcloud: "Top 20",
-            remember: false
-        };
-
-        if (userSettings.remember === true) {
-            localStorage.setItem("hasCustom", true);
-        } else {
-            localStorage.setItem("hasCustom", false);
-        }
-        localStorage.setItem("userSettings", userSettings)  
-
-    }    
-}
-
-// Get user preferences
-function setCustom() {
-    
-}
-
-
-let clicked = () => {
-    console.log("Modal Clicked")
-    content.setAttribute("class","")
-    
-    var musicVar = document.querySelector('#musicVariable').value;
-    var redditVar = document.querySelector('#redditVariable').value;
-    console.log("MusicVar: "+musicVar);
-    console.log("RedditVar: "+redditVar);
-
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-    
-    var singleModalElem = document.querySelector('#userModal');
-    var instance = M.Modal.getInstance(singleModalElem);
-
-    let openModal = () => {
-        console.log("Modal Clicked")
-        instance.open();
-    }
-
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
-    
-    console.log(elems)
-  });
->>>>>>> 2fc586640e3d5ece669356d422d610cb1415b5d5
