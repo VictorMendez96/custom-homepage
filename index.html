@@ -21,7 +21,7 @@
     <div class="modal-content">
       <h4>Your Info</h4>
       <!-- music options -->
-      <p>Please answer the following questions - all information is stored locally to your computer for when you return!</p>
+      <p class="inst">Please answer the following questions - all information is stored locally to your computer for when you return!</p>
       <div class="input-field col s12">
         <select id="musicVariable">
           <option value="" disabled selected>What kind of music do you like?</option>
@@ -52,23 +52,27 @@
           <label for="locationVariable">City</label>
         </div>
       </div>
-      <!-- Remember me next time -->
-      <div class="switch">
-        <label>
-          Remember settings?
-          <input id="remember" type="checkbox">
-          <span class="lever"></span>
-          On
-        </label>
-      </div>
       <!-- theme options -->
       <div class="input-field col s12">
         <select id="themeVariable">
           <option value="" disabled selected>What kind of theme would you like? (don't select anything if you don't want a theme)</option>
           <option value="0">Sand</option>
           <option value="1">Blue</option>
+          <option value="2">Green</option>
+          <option value="3">Red</option>
+          <option value="4">Dark</option>
+          <option value="5">Light</option>
         </select>
         <label>Subreddit Options</label>
+      </div>
+      <!-- Remember me next time -->
+      <div class="switch">
+        <label>
+          Remember settings? <br> No
+          <input id="remember" type="checkbox">
+          <span class="lever"></span>
+          Yes
+        </label>
       </div>
       <!-- modal footer -->
     </div>
