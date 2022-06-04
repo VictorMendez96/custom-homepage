@@ -2,3 +2,8 @@
     border: 2px black solid;
     
 }
+
+#reddit {
+    overflow: auto; 
+    max-height: 30rem;
+}
