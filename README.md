@@ -12,16 +12,16 @@ Similarly, the news widget is populated from the reddit API (with a filter on NS
 Additionally, music from iHeartRadio is embedded to the homepage. 
 Additionally there is a picture slideshow for an aesthetic homepage a user can arrive to upon opening their browser.
 
-User Story:
-GIVEN user wants a customizable homescreen 
-WHEN user initially arrives to page
-THEN user is prompted with a series of questions for customization
-THEN user's preferences stored in local storage so repeat entry is not necessary
-WHEN user wants to change a previous choice
-THEN they may easily do so
-WHEN user uses home page
-THEN they are presented with a picture slideshow
-THEN they are presented with a news pane
-THEN they are presented with a radio station
-THEN they are presented with a google search bar
-THEN they are presented with a local time and weather
+User Story:  
+GIVEN user wants a customizable homescreen   
+WHEN user initially arrives to page  
+THEN user is prompted with a series of questions for customization  
+THEN user's preferences stored in local storage so repeat entry is not necessary  
+WHEN user wants to change a previous choice  
+THEN they may easily do so  
+WHEN user uses home page  
+THEN they are presented with a picture slideshow  
+THEN they are presented with a news pane  
+THEN they are presented with a radio station  
+THEN they are presented with a google search bar  
+THEN they are presented with a local time and weather  
