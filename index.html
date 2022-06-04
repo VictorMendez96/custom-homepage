@@ -13,12 +13,14 @@
 
 <body>
 
+
     <!-- Modal Trigger -->
-  <button data-target="userModal" class="btn modal-trigger">Change User Settings</button>
+  <button id="userButton" data-target="userModal" class="btn modal-trigger">Change User Settings</button>
   
   <div id="userModal" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4>Your Info</h4>
+      <!-- music options -->
       <p>Please answer the following questions - all information is stored locally to your computer for when you return!</p>
       <div class="input-field col s12">
         <select id="musicVariable">
@@ -31,6 +33,7 @@
         </select>
         <label>Music Options</label>
       </div>
+      <!-- reddit options -->
       <div class="input-field col s12">
         <select id="redditVariable">
           <option value="" disabled selected>What kind of news are you interested in?</option>
@@ -40,34 +43,58 @@
           <option value="Popular">Popular</option>
           <option value="Surprise">Surprise me!</option>
         </select>
-        <label>News Options</label>
+        <label>Subreddit Options</label>
       </div>
+      <!-- Location Variable -->
+      <div class="input-field col s12">
+        <div class="input-field col s6">
+          <input placeholder="New York City" id="locationVariable" type="text" class="validate">
+          <label for="locationVariable">City</label>
+        </div>
+      </div>
+      <!-- Remember me next time -->
+      <div class="switch">
+        <label>
+          Remember settings?
+          <input id="remember" type="checkbox">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+      <!-- modal footer -->
     </div>
     <div class="modal-footer">
       <button data-target="Modal" class="btn modal-close" onclick="clicked()">Update My Settings!</button>
     </div>
   </div>
   
+<div id="errorDiv" class="hide">
+      <h2>Error in user inputs - please try re-inputting your settings</h2>
+</div>
+
+
 <div id="content" class="hide">
   <div class="row">
     <div id="weatherTime" class="part col s12">
       <h1 class="center">Time, Date, and Weather go here!</h1>
     </div>
 
-
     <div id="searchGoogle" class="part col s12">
       <script async src="https://cse.google.com/cse.js?cx=3d87ad9ccfdad045f"></script>
       <div class="gcse-search"></div>
     </div>
 
-    <div id="reddit" class="part col s5"><h1 class="center">Reddit</h1></div>
+
+    <div id="reddit" class="part col s5" ><h1 id="redditHeader" class="center" >Reddit</h1></div>
 
 
     <div id="pictures" class="part col s7"><h1 class="center">unsplash</h1></div>
 
+
     <div id="iheart" class="part col s12">
     
     </div>
+
   </div>
 
 </div>
