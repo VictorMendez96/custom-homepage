@@ -262,5 +262,25 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(elems)
   });
 
+
+  //document.getElementsByClassName("btn modal-close").addEventListener("click",function() {
+  var iheartplayer = document.getElementById('iheart');
+  var station = document.createElement('iframe');
+  station.width = "100%";
+  station.height = "200";
+  station.frameborder = "0";
+  station.src = "https://www.iheart.com/live/american-top-40-4802/?embed=true";
+
+  //if (MusicVar == 0) {
+  //  station.src = "https://www.iheart.com/live/american-top-40-4802/?embed=true";
+  //} else {
+  //  station.src = "https://www.iheart.com/live/american-top-40-4802/?embed=true";
+  //}
+
+  
+  iheartplayer.appendChild(station);
+//})
+
   checkCustom()
+
 
