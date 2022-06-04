@@ -1,11 +1,21 @@
 
 let userSettings = {};
-let musicVar = 0;let redditVar = 0;let locVar = 0;let remVar =0;
+let bodyThemes = [
+    // first element is background color, second element is reddit card color, third is font color, fourth is the button color 
+    ["DFD6A7", "F7B05B", "1F1300", "AF9B46"], //sand
+    ["48ACF0", "CCDDE2", "3a2b24", "93A3BC"], //blue
+    [], //green
+    [], //red
+    [], //dark
+    [] //light
+]
+let musicVar = 0;let redditVar = 0;let locVar = 0;let remVar =0; let theme = [];
 let redditHolder = document.getElementById("reddit");
 
 let setPage = () => {
     getImages(URL)
     fetchPosts()
+    setTheme()
 }
 
 const ACCESS_KEY="zUKzVL4c5dObj5yu1C3ByefuPOrEwxcejeM0DtyoccA"
@@ -43,6 +53,8 @@ async function getImages(url){
                     // ================================================
                     var contentCard = document.createElement("div")
                     contentCard.classList.add("card")
+                    let cardCol = `#${theme[1]}`
+                    contentCard.setAttribute("style", `background-color: ${cardCol}`)
                     contentCard.addEventListener("click", function (e) {
                         const eventTarget = e.currentTarget.firstChild.textContent
                         window.open(eventTarget)
@@ -57,6 +69,7 @@ async function getImages(url){
             thumbnail.classList.add("card-image")
             thumbnail.setAttribute("src", object.data.children[i].data.thumbnail)
             thumbnail.setAttribute("alt", "Post Thumbnail")
+            
             
             // sets different thumbnails for different types of posts
             // ================================
@@ -119,6 +132,7 @@ function checkCustom() {
         locVar = userSettings.userLocation;
         musicVar = userSettings.music;
         remVar = userSettings.remember;
+        themeVar = userSettings.theme;
         setCustom()
     } else {
         document.getElementById("userButton").textContent = "Click me to begin!"
@@ -131,6 +145,7 @@ function setCustom() {
     document.getElementById("content").setAttribute("class","")
     localStorage.setItem("userSettings", JSON.stringify(userSettings))
     document.getElementById("userButton").textContent = "Change User Settings"
+    theme = bodyThemes[themeVar];
     setPage()
 }
 
@@ -140,11 +155,13 @@ let clicked = () => {
     redditVar = document.querySelector('#redditVariable').value;
     locVar = document.querySelector('#locationVariable').value;
     remVar = document.querySelector('#remember').checked;
+    themeVar = document.querySelector('#themeVariable').value;
 
-    console.log("LocVar: "+locVar);
-    console.log("MusicVar: "+musicVar);
-    console.log("RedditVar: "+redditVar);
-    console.log("Remember: "+remVar)
+    // console.log("LocVar: "+locVar);
+    // console.log("MusicVar: "+musicVar);
+    // console.log("RedditVar: "+redditVar);
+    //console.log("ThemeVar: "+themeVar);
+    // console.log("Remember: "+remVar)
     
     if (locVar == "" || musicVar == "" || redditVar == "") {
         console.log("blank input")
@@ -157,11 +174,7 @@ let clicked = () => {
         userSettings.userLocation = locVar;
         userSettings.music = musicVar;
         userSettings.remember = remVar;
-    
-        console.log("LocVar: "+locVar);
-        console.log("MusicVar: "+musicVar);
-        console.log("RedditVar: "+userSettings.subreddit);
-        console.log("Remember: "+userSettings.remember)
+        userSettings.theme = themeVar;
         setCustom()
     }
 }
@@ -207,6 +220,21 @@ document.addEventListener('DOMContentLoaded', function() {
   iheartplayer.appendChild(station);
 //})
 
-  checkCustom()
+checkCustom()
 
+
+function setTheme() {
+    let bodyVar = document.getElementById("body");
+    let button = document.getElementById("userButton")
+    // set variables
+    console.log("theme: "+theme)
+    // background color
+    // font color
+    // card colors
+
+
+    bodyVar.setAttribute("style", `background-color: #${theme[0]}; color:#${theme[2]}`)
+    button.setAttribute("style", `background-color: #${theme[3]}; color:#${theme[2]}`)
+    console.log("set color")
+}
 
