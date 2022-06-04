@@ -115,6 +115,10 @@ function checkCustom() {
     if (userSettings.remember != false) {
         console.log("made from past")
         console.log(userSettings)
+        userSettings.subreddit = redditVar;
+        userSettings.userLocation = locVar;
+        userSettings.music = musicVar;
+        userSettings.remember = remVar;
         setCustom()
     } else {
         document.getElementById("userButton").textContent = "Click me to begin!"
