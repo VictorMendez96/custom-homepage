@@ -79,34 +79,41 @@ var popular = "https://www.reddit.com/r/popular/hot.json"
     // parentdiv.appendChild(div)
 
 
-
-function fetchPosts() {
-var popular = "https://www.reddit.com/r/popular/hot.json"
-
-
-fetch(popular)
-    .then( function (response) {
-        return response.json()
-    })
-    .then(function (object) {
-        console.log(object)
+// Begin reddit API
+// =================================================================
+    // TODO: Make cards clickable
+        // - make the user selection the subreddit that is pulled
+        // - butify the card holder and contents
+        // - exempt NSFW posts
         
-        for (let i=0; i < 25; i++) {
-            var urlSrc = object.data.children[i].data.url
-            var title = object.data.children[i].data.title
-            
-            // Creates card contianer and sets card attribute
-            // ================================================
-            var contentCard = document.createElement("div")
-            contentCard.classList.add("card")
+        function fetchPosts() {
+            var popular = "https://www.reddit.com/r/popular/hot.json"
             
             
-
-
-            
-                        
-            // creates image div and attributes
-            // ================================
+            fetch(popular)
+            .then( function (response) {
+                return response.json()
+            })
+            .then(function (object) {
+                console.log(object)
+                
+                for (let i=0; i < 25; i++) {
+                    var urlSrc = object.data.children[i].data.url
+                    var title = object.data.children[i].data.title
+                    
+                    
+                    // Creates card contianer and sets card attribute
+                    // ================================================
+                    var contentCard = document.createElement("div")
+                    contentCard.classList.add("card")
+                    contentCard.addEventListener("click", function (e) {
+                        const eventTarget = e.currentTarget.firstChild.textContent
+                        window.open(eventTarget)
+                        console.log(eventTarget)
+                    })           
+                    
+                    // creates image div and attributes
+                    // ================================
             var cardImgEl = document.createElement("div")
             cardImgEl.classList.add("card-image")
             var thumbnail = document.createElement("img")
@@ -124,29 +131,49 @@ fetch(popular)
             } else {
                 thumbnail.style.height = ("200px")
             }
-
+            
             // sets post title to the card content
             // ================================
             var cardContent = document.createElement("div")
             cardContent.classList.add("card-content")
             cardContent.style.fontSize = "20px"
-            // cardContent.style.fontWeight = "bold"
-           
+            
+            // sets the subreddit name to the title of the card
+            // ================================
+            var subreddit = object.data.children[i].data.subreddit_name_prefixed
+            var cardTitle = document.createElement("div")
+            cardTitle.classList.add("card-title")
+            cardTitle.style.fontSize = "20px"
+            cardTitle.textContent = subreddit
+            
+            // creates anchor tag for link
+            var a = document.createElement("a")
+            var link = document.createTextNode(urlSrc)
+            a.setAttribute("class", "hide")
+            a.setAttribute("target", "_blank")
+            a.href = urlSrc
+            a.appendChild(link)
+            contentCard.append(a)
+
             // Appends items to the Card
             // ================================================
             cardImgEl.append(thumbnail)
+            cardContent.append(cardTitle)
             cardContent.append(title)
             contentCard.append(cardContent)
             contentCard.append(thumbnail)
             
+           
+            
+            
             document.getElementById("reddit").append(contentCard)
             
-           
+            
         } })
-            
         
-            
-            
+        
+        
+        
                 
                 
                 
@@ -157,11 +184,7 @@ fetch(popular)
     }
     
     fetchPosts()
-    // image.src = data.childeren[i].data.url_overridden_by_dest
-    // h4.textContent = body.data.children[i].data.title
-    // div.appendChild(h4)
-    // div.appendChild(image)
-    // parentdiv.appendChild(div)
+   
 
 // Begin 1st opening function
 function checkCustom() {
