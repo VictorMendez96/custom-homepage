@@ -1,9 +1,15 @@
 .part {
-    border: 2px black solid;
+    border-radius: 20px;
+    margin-bottom: 1%;
     
 }
 
 #reddit {
     overflow: auto; 
     max-height: 30rem;
+    color: #3a2b24;
+}
+
+#userButton {
+   margin-left: 40%;
 }
