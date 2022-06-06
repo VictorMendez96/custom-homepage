@@ -213,6 +213,7 @@ function setMusic() {
 
   if (iheartplayer.hasChildNodes()) {
       iheartplayer.removeChild(iheartplayer.lastChild)
+      iheartplayer.appendChild(station)
   } else {
     iheartplayer.appendChild(station)
   }
