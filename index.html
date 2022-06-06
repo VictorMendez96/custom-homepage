@@ -67,7 +67,9 @@
        
     </style>
     <title>Custom Homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
+<<<<<<< HEAD
 <body>
     <section id="openweather">
         <section id="search">
@@ -90,21 +92,71 @@
     </section>
     
     <section id="google">
+=======
 
-    </section>
-    
-    <section id="unsplash">
+>>>>>>> 6022f5ba1144e2bfc14bddd3b2e0736b6bb00e81
 
-    </section>
+<body>
 
-    <section id="reddit">
+    <!-- Modal Trigger -->
+  <button data-target="userModal" class="btn modal-trigger">Change User Settings</button>
+  
+  <div id="userModal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Your Info</h4>
+      <p>Please answer the following questions - all information is stored locally to your computer for when you return!</p>
+      <div class="input-field col s12">
+        <select id="musicVariable">
+          <option value="" disabled selected>What kind of music do you like?</option>
+          <option value="Pop">Pop</option>
+          <option value="Country">Country</option>
+          <option value="Rap">Rap</option>
+          <option value="Rock">Rock</option>
+          <option value="Surprise">Surprise me!</option>
+        </select>
+        <label>Music Options</label>
+      </div>
+      <div class="input-field col s12">
+        <select id="redditVariable">
+          <option value="" disabled selected>What kind of news are you interested in?</option>
+          <option value="All">All</option>
+          <option value="Technology">Technology</option>
+          <option value="Aww">Aww</option>
+          <option value="Popular">Popular</option>
+          <option value="Surprise">Surprise me!</option>
+        </select>
+        <label>News Options</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button data-target="Modal" class="btn modal-close">Update My Settings!</button>
+    </div>
+  </div>
+  
+<div id="content" class="hide">
+  <div class="row">
+    <div id="weatherTime" class="part col s12">
+      <h1 class="center">Time, Date, and Weather go here!</h1>
+    </div>
 
-    </section>
+    <div id="searchGoogle" class="part col s12">
+      <script async src="https://cse.google.com/cse.js?cx=3d87ad9ccfdad045f"></script>
+      <div class="gcse-search"></div>
+    </div>
 
-    <section id="soundcloud">
+    <div id="reddit" class="part col s5"><h1 class="center">Reddit</h1></div>
 
-    </section>
+    <div id="pictures" class="part col s7"><h1 class="center">unsplash</h1></div>
 
+    <div id="soundcloud" class="part col s12"><h1 class="center">music</h1></div>
+  </div>
+
+</div>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"> </script>
 </body>
 </html>

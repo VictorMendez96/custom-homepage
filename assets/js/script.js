@@ -1,3 +1,10 @@
+let userSettings = {};
+let hasCustom = false;
+let content = document.getElementById("content")
+let musicVar = 0;
+
+
+
 console.log("Hello")
 const ACCESS_KEY="zUKzVL4c5dObj5yu1C3ByefuPOrEwxcejeM0DtyoccA"
 const URL=`https://api.unsplash.com/photos/?client_id=${ACCESS_KEY}`
