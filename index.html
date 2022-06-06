@@ -4,11 +4,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        
+        #search{
+            padding: px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .search-container{
+            background-color: #eee;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 30rem;
+            box-shadow: 1px 1px #888888;
+            border-radius: 10px;
+            
+            
+        }
+         #weather-serch-button{
+             margin-left: 3px;
+             padding: 5px 10px;
+             border: none;
+             border-radius: 3px;
+             background-color: #ff385c;
+             color :#fff;
+             font-size: 18px;
+            
+
+        }
+        #search-input-value{
+            padding: 5px 10px;
+            
+        }
+        #search-input-value:focus{
+            outline: none;
+        }
+        .weather-info-warapper{
+            background-color: #ff385c;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            margin-top: 10px;
+            box-shadow: 1px 1px #888888;
+            border-radius: 20px;
+
+
+
+        }
+        .description{
+        font-size: 18px;
+        font-weight:bold;
+        margin: 0;
+        }
+       
+    </style>
     <title>Custom Homepage</title>
 </head>
 <body>
     <section id="openweather">
-
+        <section id="search">
+            <h1>Weather by zip code </h1>
+            <div class="search-container">
+    
+                <label>
+                    
+                    <input placeholder="Enter zip code " id="search-input-value" />
+                </label>
+                <button id="weather-serch-button">
+                    Search
+                </button>
+            </div>
+        </section>
+        <section id="weather-info">
+            
+    
+        </section> 
     </section>
     
     <section id="google">
