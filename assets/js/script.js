@@ -9,13 +9,14 @@ let bodyThemes = [
     ["2E2E2E", "5A5A5A", "FFFFFF", "383838"], //dark
     ["FFFFFF", "FFFFFF", "000000", "FFFFFF"] //light
 ]
-let musicVar = 0;let redditVar = 0;let locVar = 0;let remVar =0; let theme = [];
+let musicVar = "";let redditVar = 0;let locVar = 0;let remVar =0; let theme = [];
 let redditHolder = document.getElementById("reddit");
 
 let setPage = () => {
     getImages(URL)
     fetchPosts()
     setTheme()
+    setMusic()
 }
 
 const ACCESS_KEY="zUKzVL4c5dObj5yu1C3ByefuPOrEwxcejeM0DtyoccA"
@@ -202,24 +203,20 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(elems)
   });
 
-
-  //document.getElementsByClassName("btn modal-close").addEventListener("click",function() {
+function setMusic() {
   var iheartplayer = document.getElementById('iheart');
   var station = document.createElement('iframe');
   station.width = "100%";
   station.height = "200";
   station.frameborder = "0";
-  station.src = `https://www.iheart.com/live/american-top-40-4802/?embed=true`;
+  station.src = musicVar;
 
-  //if (MusicVar == 0) {
-  //  station.src = "https://www.iheart.com/live/american-top-40-4802/?embed=true";
-  //} else {
-  //  station.src = "https://www.iheart.com/live/american-top-40-4802/?embed=true";
-  //}
-
-  
-  iheartplayer.appendChild(station);
-//})
+  if (iheartplayer.hasChildNodes()) {
+      iheartplayer.removeChild(iheartplayer.lastChild)
+  } else {
+    iheartplayer.appendChild(station)
+  }
+};
 
 checkCustom()
 
