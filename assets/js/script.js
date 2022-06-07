@@ -28,7 +28,6 @@ let bodyThemes = [
 let musicVar = "";let redditVar = "";let locVar = "";let remVar =""; let theme = [];
 let redditHolder = document.getElementById("reddit");
 let picArray =[]; let picHolder = document.getElementById("pictures");
-
 let setPage = () => {
     getImages(URL)
     fetchPosts()
@@ -99,15 +98,25 @@ buildPics()
 
 // Begin reddit API
 // =================================================================
-    // TODO: Make cards clickable
-        // - make the user selection the subreddit that is pulled
-        // - butify the card holder and contents
-        // - exempt NSFW posts
-        
-        function fetchPosts() {
-            var popular = `https://www.reddit.com/r/${redditVar}/hot.json`
-            //empty container on new request
-            document.getElementById("reddit").innerHTML = ""
+// TODO: 
+
+// - exempt NSFW posts?
+// - header
+
+function fetchPosts() {
+    var popular = `https://www.reddit.com/r/${redditVar}/hot.json`
+    
+    //empty container on new request
+    document.getElementById("reddit").innerHTML = ""
+    
+    fetch(popular)
+    .then( function (response) {
+        return response.json()
+    })
+    .then(function (object) {
+        for (let i=0; i < 25; i++) {
+            var urlSrc = object.data.children[i].data.url
+            var title = object.data.children[i].data.title
             
             fetch(popular)
             .then( function (response) {
@@ -130,32 +139,39 @@ buildPics()
                         const eventTarget = e.currentTarget.firstChild.textContent
                         window.open(eventTarget)
                     })           
+                    if (object.data.children[i].data.thumbnail === "nsfw") {
+                        contentCard.setAttribute("style", "hide" )
+                    }
                     
                     // creates image div and attributes
                     // ================================
-            var cardImgEl = document.createElement("div")
-            cardImgEl.classList.add("card-image")
-            var thumbnail = document.createElement("img")
-            thumbnail.classList.add("card-image")
-            thumbnail.setAttribute("src", object.data.children[i].data.thumbnail)
-            thumbnail.setAttribute("alt", "Post Thumbnail")
+                    var cardImgEl = document.createElement("div")
+                    cardImgEl.classList.add("card-image")
+                    var thumbnail = document.createElement("img")
+                    thumbnail.classList.add("card-image")
+                    thumbnail.setAttribute("src", object.data.children[i].data.thumbnail)
+                    thumbnail.setAttribute("alt", "Post Thumbnail")
             
             
             // sets different thumbnails for different types of posts
             // ================================
+
             if(object.data.children[i].data.thumbnail === "self" || object.data.children[i].data.thumbnail === "default") {
                 thumbnail.setAttribute("src", "assets/img/reddit_logo_horizontal_on_orangered.png")
             } else if(object.data.children[i].data.thumbnail === "nsfw") {
                 thumbnail.setAttribute("src", "assets/img/interstitial-image-over18.png")
                 thumbnail.style.height = ("160px")
             } else {
+
                 thumbnail.style.height = ("200px")
             }
+            
             // sets post title to the card content
             // ================================
             var cardContent = document.createElement("div")
             cardContent.classList.add("card-content")
             cardContent.style.fontSize = "20px"
+            
             // sets the subreddit name to the title of the card
             // ================================
             var subreddit = object.data.children[i].data.subreddit_name_prefixed
@@ -163,7 +179,9 @@ buildPics()
             cardTitle.classList.add("card-title")
             cardTitle.style.fontSize = "20px"
             cardTitle.textContent = subreddit
+            
             // creates anchor tag for link
+            // ================================
             var a = document.createElement("a")
             var link = document.createTextNode(urlSrc)
             a.setAttribute("class", "hide")
@@ -171,6 +189,7 @@ buildPics()
             a.href = urlSrc
             a.appendChild(link)
             contentCard.append(a)
+            
             // Appends items to the Card
             // ================================================
             cardImgEl.append(thumbnail)
@@ -180,7 +199,7 @@ buildPics()
             contentCard.append(thumbnail)
             document.getElementById("reddit").append(contentCard)
         } })
-    }
+    }})}
 
 // Begin 1st opening function
 function checkCustom() {
@@ -195,6 +214,7 @@ function checkCustom() {
         musicVar = userSettings.music;
         remVar = userSettings.remember;
         themeVar = userSettings.theme;
+
         setCustom()
     } else {
         document.getElementById("userButton").textContent = "Click me to begin!"
@@ -227,16 +247,17 @@ let clicked = () => {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-
+    
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
     
     var singleModalElem = document.querySelector('#userModal');
     var instance = M.Modal.getInstance(singleModalElem);
-
+    
     let openModal = () => {
         instance.open();
     }
+
   });
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -244,6 +265,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FormSelect.init(elems);
   });
 
+
+//Create setMusic function to call when setPage is called
 function setMusic() {
   var iheartplayer = document.getElementById('iheart');
   var station = document.createElement('iframe');
@@ -251,7 +274,8 @@ function setMusic() {
   station.height = "200";
   station.frameborder = "0";
   station.src = musicVar;
-
+  
+  //If else statement for Media player, create iframe, replace if one already exists
   if (iheartplayer.hasChildNodes()) {
       iheartplayer.removeChild(iheartplayer.lastChild)
       iheartplayer.appendChild(station)
