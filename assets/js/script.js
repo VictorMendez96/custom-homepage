@@ -42,7 +42,6 @@ const URL=`https://api.unsplash.com/photos/?client_id=${ACCESS_KEY}`
 async function getImages(url){
  const response=await fetch(url)
  const data=await response.json()
- console.log(data)
  //build pic array
  let buildPicArray = (data) => {
      for (let i = 0; i < data.length; i++) {
@@ -51,12 +50,10 @@ async function getImages(url){
         let picURL = picObj.urls.small
         //get artist info
         let picArtist = picObj.user.name;
-        console.log(picArtist)
         let authorLink = picObj.links.html;
         let temp = [picURL, picArtist, authorLink]
         picArray[i] = temp;
      }
-
  }
 
  let buildPicCard = () => {
@@ -67,27 +64,29 @@ async function getImages(url){
     //clear holder
     picHolder.innerHTML = "";
     //  make whole div clickable element
-    let picLink = document.createElement("span")
-    picLink.innerHTML= `<a href="${newPic[2]}" target="_blank"> </a>`
-    //make image element
+    let picLink = document.createElement("a")
+    picLink.setAttribute("href", newPic[02])
+    picLink.setAttribute("class", "container")
+    picLink.setAttribute("target", "_blank")
+    //make image elements
     let picImg = document.createElement("img")
     picImg.setAttribute("src", newPic[0])
     let picFacts = document.createElement("p")
-    picFacts.textContent = `Image Courtesy of ${newPic[1]} on Unsplash.`
+    picFacts.innerHTML =  `Image Courtesy of ${newPic[1]} on Unsplash. <br> Click picture to see more on Unsplash.com!`
     picFacts.setAttribute("class", "center")
+
+    picLink.appendChild(picImg)
     picHolder.append(picFacts)
     picHolder.append(picLink)
-    picHolder.append(picImg)
-    
+      
 }
 
 function countdown () {
     let timerInterval = setTimeout(function (){
         buildPicCard()
         countdown()
-    }, 10000);
+    }, 15000);
     }
-
 
 function buildPics() {
     buildPicArray(data);
@@ -115,7 +114,6 @@ buildPics()
                 return response.json()
             })
             .then(function (object) {
-                console.log(object)
                 
                 for (let i=0; i < 25; i++) {
                     var urlSrc = object.data.children[i].data.url
@@ -131,7 +129,6 @@ buildPics()
                     contentCard.addEventListener("click", function (e) {
                         const eventTarget = e.currentTarget.firstChild.textContent
                         window.open(eventTarget)
-                        console.log(eventTarget)
                     })           
                     
                     // creates image div and attributes
@@ -193,8 +190,6 @@ function checkCustom() {
         return
     }
     if (userSettings.remember != false) {
-        console.log("made from past")
-        console.log(userSettings)
         redditVar = userSettings.subreddit;
         locVar = userSettings.userLocation;
         musicVar = userSettings.music;
@@ -203,7 +198,6 @@ function checkCustom() {
         setCustom()
     } else {
         document.getElementById("userButton").textContent = "Click me to begin!"
-        console.log("Nothing Stored")
     }    
 }
 
@@ -223,7 +217,6 @@ let clicked = () => {
     themeVar = document.querySelector('#themeVariable').value;
     
     if (locVar == "" || musicVar == "" || redditVar == "") {
-        console.log("blank input")
         document.getElementById("errorDiv").setAttribute("class","center")
         document.getElementById("content").setAttribute("class","hide")
     } else {
@@ -242,17 +235,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var instance = M.Modal.getInstance(singleModalElem);
 
     let openModal = () => {
-        console.log("Modal Clicked")
         instance.open();
     }
-
   });
 
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems);
-    
-    console.log(elems)
   });
 
 function setMusic() {
