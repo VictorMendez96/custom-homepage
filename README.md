@@ -30,4 +30,5 @@ THEN they are presented with a local time and weather
 <img src = ".assets/img/Initial-user-input.png">
 
 Deployment Link : https://victormendez96.github.io/custom-homepage/
+
 Github Link : https://github.com/VictorMendez96/custom-homepage
