@@ -83,6 +83,7 @@ async function getImages(url){
                     // ================================================
                     var contentCard = document.createElement("div")
                     contentCard.classList.add("card")
+                    contentCard.classList.add("hoverable")
                     let cardCol = `#${theme[1]}`
                     contentCard.setAttribute("style", `background-color: ${cardCol}`)
                     contentCard.addEventListener("click", function (e) {
