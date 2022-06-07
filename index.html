@@ -66,6 +66,8 @@
         }
        
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Custom Homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
@@ -92,26 +94,29 @@
     
     <section id="google">
 
-<body>
+<body id="body">
+
 
     <!-- Modal Trigger -->
-  <button data-target="userModal" class="btn modal-trigger">Change User Settings</button>
+  <button id="userButton" data-target="userModal" class="btn modal-trigger">Change User Settings</button>
   
   <div id="userModal" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4>Your Info</h4>
-      <p>Please answer the following questions - all information is stored locally to your computer for when you return!</p>
+      <!-- music options -->
+      <p class="inst">Please answer the following questions - all information is stored locally to your computer for when you return!</p>
       <div class="input-field col s12">
         <select id="musicVariable">
           <option value="" disabled selected>What kind of music do you like?</option>
-          <option value="Pop">Pop</option>
-          <option value="Country">Country</option>
-          <option value="Rap">Rap</option>
-          <option value="Rock">Rock</option>
-          <option value="Surprise">Surprise me!</option>
+          <option value="https://www.iheart.com/live/american-top-40-4802/?embed=true">Top Hits!</option>
+          <option value="https://www.iheart.com/live/iheartcountry-radio-4418/?embed=true">Country</option>
+          <option value="https://www.iheart.com/live/the-beat-4429/?embed=true">Hip Hop</option>
+          <option value="https://www.iheart.com/live/kbpi-373/?embed=true">Rock</option>
+          <option value="https://www.iheart.com/live/latino-hits-7193/?embed=true">Latin</option>
         </select>
         <label>Music Options</label>
       </div>
+      <!-- reddit options -->
       <div class="input-field col s12">
         <select id="redditVariable">
           <option value="" disabled selected>What kind of news are you interested in?</option>
@@ -121,14 +126,49 @@
           <option value="Popular">Popular</option>
           <option value="Surprise">Surprise me!</option>
         </select>
-        <label>News Options</label>
+        <label>Subreddit Options</label>
       </div>
+      <!-- Location Variable -->
+      <div class="input-field col s12">
+        <div class="input-field col s6">
+          <input placeholder="New York City" id="locationVariable" type="text" class="validate">
+          <label for="locationVariable">City</label>
+        </div>
+      </div>
+      <!-- theme options -->
+      <div class="input-field col s12">
+        <select id="themeVariable">
+          <option value="" disabled selected>What kind of theme would you like? (don't select anything if you don't want a theme)</option>
+          <option value="0">Sand</option>
+          <option value="1">Blue</option>
+          <option value="2">Green</option>
+          <option value="3">Red</option>
+          <option value="4">Dark</option>
+          <option value="5">Light</option>
+        </select>
+        <label>Subreddit Options</label>
+      </div>
+      <!-- Remember me next time -->
+      <div class="switch">
+        <label>
+          Remember settings? <br> No
+          <input id="remember" type="checkbox">
+          <span class="lever"></span>
+          Yes
+        </label>
+      </div>
+      <!-- modal footer -->
     </div>
     <div class="modal-footer">
-      <button data-target="Modal" class="btn modal-close">Update My Settings!</button>
+      <button data-target="Modal" class="btn modal-close" onclick="clicked()">Update My Settings!</button>
     </div>
   </div>
   
+<div id="errorDiv" class="hide">
+      <h2>Error in user inputs - please try re-inputting your settings</h2>
+</div>
+
+
 <div id="content" class="hide">
   <div class="row">
     <div id="weatherTime" class="part col s12">
@@ -140,11 +180,17 @@
       <div class="gcse-search"></div>
     </div>
 
-    <div id="reddit" class="part col s5"><h1 class="center">Reddit</h1></div>
+
+    <div id="reddit" class="part col s5" ><h3 id="redditHeader" class="center" >Reddit</h3></div>
+
 
     <div id="pictures" class="part col s7"><h1 class="center">unsplash</h1></div>
 
-    <div id="soundcloud" class="part col s12"><h1 class="center">music</h1></div>
+
+    <div id="iheart" class="part col s12">
+    
+    </div>
+
   </div>
 
 </div>
