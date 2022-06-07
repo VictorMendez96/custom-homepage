@@ -36,9 +36,8 @@ async function getImages(url){
 // Begin reddit API
 // =================================================================
     // TODO: 
-        // - make the user selection the subreddit that is pulled
-        // - butify the card holder and contents
-        // - exempt NSFW posts
+               
+        // - exempt NSFW posts?
         // - header
         
         function fetchPosts() {
@@ -89,7 +88,7 @@ async function getImages(url){
                 thumbnail.setAttribute("src", ".assets/custom-homepage/assets/img/reddit_logo_horizontal_on_orangered.png")
             } else if(object.data.children[i].data.thumbnail === "nsfw") {
                 thumbnail.setAttribute("src", ".assets/custom-homepage/assets/img/interstitial-image-over18.png")
-                thumbnail.style.height = ("160px")
+                
             } else {
                 thumbnail.style.height = ("200px")
             }
@@ -99,6 +98,10 @@ async function getImages(url){
             var cardContent = document.createElement("div")
             cardContent.classList.add("card-content")
             cardContent.style.fontSize = "20px"
+            if(object.data.children[i].data.thumbnail === "nsfw") {
+                contentCard.setAttribute("class", "hide")
+            }
+
             
             // sets the subreddit name to the title of the card
             // ================================
@@ -169,8 +172,8 @@ let clicked = () => {
 
     // console.log("LocVar: "+locVar);
     // console.log("MusicVar: "+musicVar);
-    // console.log("RedditVar: "+redditVar);
-    //console.log("ThemeVar: "+themeVar);
+    console.log("RedditVar: "+redditVar);
+    // console.log("ThemeVar: "+themeVar);
     // console.log("Remember: "+remVar)
     
     if (locVar == "" || musicVar == "" || redditVar == "") {
