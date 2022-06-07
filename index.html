@@ -11,7 +11,7 @@
 </head>
 
 
-<body>
+<body id="body">
 
 
     <!-- Modal Trigger -->
@@ -21,15 +21,15 @@
     <div class="modal-content">
       <h4>Your Info</h4>
       <!-- music options -->
-      <p>Please answer the following questions - all information is stored locally to your computer for when you return!</p>
+      <p class="inst">Please answer the following questions - all information is stored locally to your computer for when you return!</p>
       <div class="input-field col s12">
         <select id="musicVariable">
           <option value="" disabled selected>What kind of music do you like?</option>
-          <option value="Pop">Pop</option>
-          <option value="Country">Country</option>
-          <option value="Rap">Rap</option>
-          <option value="Rock">Rock</option>
-          <option value="Surprise">Surprise me!</option>
+          <option value="https://www.iheart.com/live/american-top-40-4802/?embed=true">Top Hits!</option>
+          <option value="https://www.iheart.com/live/iheartcountry-radio-4418/?embed=true">Country</option>
+          <option value="https://www.iheart.com/live/the-beat-4429/?embed=true">Hip Hop</option>
+          <option value="https://www.iheart.com/live/kbpi-373/?embed=true">Rock</option>
+          <option value="https://www.iheart.com/live/latino-hits-7193/?embed=true">Latin</option>
         </select>
         <label>Music Options</label>
       </div>
@@ -52,13 +52,26 @@
           <label for="locationVariable">City</label>
         </div>
       </div>
+      <!-- theme options -->
+      <div class="input-field col s12">
+        <select id="themeVariable">
+          <option value="" disabled selected>What kind of theme would you like? (don't select anything if you don't want a theme)</option>
+          <option value="0">Sand</option>
+          <option value="1">Blue</option>
+          <option value="2">Green</option>
+          <option value="3">Red</option>
+          <option value="4">Dark</option>
+          <option value="5">Light</option>
+        </select>
+        <label>Subreddit Options</label>
+      </div>
       <!-- Remember me next time -->
       <div class="switch">
         <label>
-          Remember settings?
+          Remember settings? <br> No
           <input id="remember" type="checkbox">
           <span class="lever"></span>
-          On
+          Yes
         </label>
       </div>
       <!-- modal footer -->
@@ -85,7 +98,7 @@
     </div>
 
 
-    <div id="reddit" class="part col s5" ><h1 id="redditHeader" class="center" >Reddit</h1></div>
+    <div id="reddit" class="part col s5" ><h3 id="redditHeader" class="center" >Reddit</h3></div>
 
 
     <div id="pictures" class="part col s7"><h1 class="center">unsplash</h1></div>

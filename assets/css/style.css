@@ -1,9 +1,25 @@
 .part {
-    border: 2px black solid;
+    border-radius: 20px;
+    margin-bottom: 1%;
     
 }
 
 #reddit {
     overflow: auto; 
     max-height: 30rem;
+}
+
+#userButton {
+   margin-left: 40%;
+}
+
+label {
+    font: 150%;
+    font-weight: bold;
+}
+
+.inst {
+    font: 150%;
+    font-weight: bold;
+    color: black;
 }
