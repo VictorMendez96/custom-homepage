@@ -106,10 +106,12 @@ function fetchPosts() {
             
             // sets different thumbnails for different types of posts
             // ================================
-            if(object.data.children[i].data.thumbnail === "self" || object.data.children[i].data.thumbnail === "default" && userSettings.theme !== 5) {
-                thumbnail.setAttribute("src", "/custom-homepage/assets/img/reddit_logo_horizontal_on_orangered.png")
-            } else if(object.data.children[i].data.thumbnail === "self" && userSettings.theme == 5) {
-                thumbnail.setAttribute("src", "/custom-homepage/assets/img/Reddit_Lockup_OnWhite.png")
+            if(object.data.children[i].data.thumbnail === "self" || object.data.children[i].data.thumbnail === "default" || object.data.children[i].data.thumbnail === "spoiler" && userSettings.theme !== "5") {
+                thumbnail.setAttribute("src", "assets/img/reddit_logo_horizontal_on_orangered.png")
+            } else if (object.data.children[i].data.thumbnail === "self" || object.data.children[i].data.thumbnail === "default" || object.data.children[i].data.thumbnail === "spoiler" && userSettings.theme === "5") {
+               
+                thumbnail.setAttribute("src", "assets/img/Reddit_Lockup_OnWhite.png")
+                thumbnail.style.height = ("200px")
             }
             else {
                 thumbnail.style.height = ("200px")
@@ -263,4 +265,4 @@ function setLocal() {
     console.log(`after User: ${userSettings}}`)
     localStorage.setItem("userSettings", JSON.stringify(userSettings))
 }
-console.log(userSettings)
+console.log(userSettings.theme)
