@@ -101,7 +101,7 @@ function fetchPosts() {
                     var thumbnail = document.createElement("img")
                     thumbnail.classList.add("card-image")
                     thumbnail.setAttribute("src", object.data.children[i].data.thumbnail)
-            thumbnail.setAttribute("alt", "Post Thumbnail")
+                    thumbnail.setAttribute("alt", "Post Thumbnail")
             
             
             // sets different thumbnails for different types of posts
