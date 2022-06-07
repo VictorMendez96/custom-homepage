@@ -16,15 +16,12 @@ async function getImages(url){
 //  console.log(data)
 }
 
-<<<<<<< HEAD
 
 
 
 
 
 
-=======
->>>>>>> cd0d6ebe4d61baeb8303ba06ac56acbc771b1207
 // Begin reddit API
 // =================================================================
     // TODO: 
@@ -34,14 +31,12 @@ async function getImages(url){
         // - header
         
         function fetchPosts() {
-<<<<<<< HEAD
-            var subreddit = `https://www.reddit.com/r/${redditVar}/hot.json`
-=======
-            var popular = `https://www.reddit.com/r/popular/hot.json`
->>>>>>> cd0d6ebe4d61baeb8303ba06ac56acbc771b1207
             
             
-            fetch(subreddit)
+            fetchURL = `https://www.reddit.com/r/${redditVar}/hot.json`
+            
+            console.log(fetchURL)
+            fetch(fetchURL)
             .then( function (response) {
                 return response.json()
             })
@@ -118,15 +113,10 @@ async function getImages(url){
             
         } })
     }
-<<<<<<< HEAD
-    fetchPosts()
+   
      
     
     // Begin 1st opening function
-=======
-
-// Begin 1st opening function
->>>>>>> cd0d6ebe4d61baeb8303ba06ac56acbc771b1207
 function checkCustom() {
     userSettings = JSON.parse(localStorage.getItem("userSettings"));
     if (userSettings.remember != false) {
@@ -205,8 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(elems)
   });
 
-<<<<<<< HEAD
-=======
 
   //document.getElementsByClassName("btn modal-close").addEventListener("click",function() {
   var iheartplayer = document.getElementById('iheart');
@@ -226,6 +214,5 @@ document.addEventListener('DOMContentLoaded', function() {
   iheartplayer.appendChild(station);
 //})
 
->>>>>>> cd0d6ebe4d61baeb8303ba06ac56acbc771b1207
   checkCustom()
 
