@@ -6,7 +6,16 @@
 
 #reddit {
     overflow: auto; 
-    max-height: 30rem;
+    max-height: 40rem;
+}
+
+#pictures {
+    overflow: hidden; 
+    max-height: 40rem;
+}
+
+#pictures img{
+    align-items: center;
 }
 
 #userButton {

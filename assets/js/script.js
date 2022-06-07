@@ -27,6 +27,7 @@ let bodyThemes = [
 
 let musicVar = "";let redditVar = "";let locVar = "";let remVar =""; let theme = [];
 let redditHolder = document.getElementById("reddit");
+let picArray =[]; let picHolder = document.getElementById("pictures");
 
 let setPage = () => {
     getImages(URL)
@@ -41,8 +42,60 @@ const URL=`https://api.unsplash.com/photos/?client_id=${ACCESS_KEY}`
 async function getImages(url){
  const response=await fetch(url)
  const data=await response.json()
- console.log("unsplash:")
  console.log(data)
+ //build pic array
+ let buildPicArray = (data) => {
+     for (let i = 0; i < data.length; i++) {
+        //get image url
+        let picObj = data[i]
+        let picURL = picObj.urls.small
+        //get artist info
+        let picArtist = picObj.user.name;
+        console.log(picArtist)
+        let authorLink = picObj.links.html;
+        let temp = [picURL, picArtist, authorLink]
+        picArray[i] = temp;
+     }
+
+ }
+
+ let buildPicCard = () => {
+    //random image
+    let randNum = Math.floor(Math.random()*picArray.length);
+    //get pic info
+    let newPic = picArray[randNum]
+    //clear holder
+    picHolder.innerHTML = "";
+    //  make whole div clickable element
+    let picLink = document.createElement("span")
+    picLink.innerHTML= `<a href="${newPic[2]}" target="_blank"> </a>`
+    //make image element
+    let picImg = document.createElement("img")
+    picImg.setAttribute("src", newPic[0])
+    let picFacts = document.createElement("p")
+    picFacts.textContent = `Image Courtesy of ${newPic[1]} on Unsplash.`
+    picFacts.setAttribute("class", "center")
+    picHolder.append(picFacts)
+    picHolder.append(picLink)
+    picHolder.append(picImg)
+    
+}
+
+function countdown () {
+    let timerInterval = setTimeout(function (){
+        buildPicCard()
+        countdown()
+    }, 10000);
+    }
+
+
+function buildPics() {
+    buildPicArray(data);
+    buildPicCard();
+    countdown();
+}
+
+buildPics()
 }
 
 // Begin reddit API
@@ -54,7 +107,6 @@ async function getImages(url){
         
         function fetchPosts() {
             var popular = `https://www.reddit.com/r/${redditVar}/hot.json`
-            console.log(popular)
             //empty container on new request
             document.getElementById("reddit").innerHTML = ""
             
@@ -95,9 +147,9 @@ async function getImages(url){
             // sets different thumbnails for different types of posts
             // ================================
             if(object.data.children[i].data.thumbnail === "self" || object.data.children[i].data.thumbnail === "default") {
-                thumbnail.setAttribute("src", "/custom-homepage/assets/img/reddit_logo_horizontal_on_orangered.png")
+                thumbnail.setAttribute("src", "assets/img/reddit_logo_horizontal_on_orangered.png")
             } else if(object.data.children[i].data.thumbnail === "nsfw") {
-                thumbnail.setAttribute("src", "/custom-homepage/assets/img/interstitial-image-over18.png")
+                thumbnail.setAttribute("src", "assets/img/interstitial-image-over18.png")
                 thumbnail.style.height = ("160px")
             } else {
                 thumbnail.style.height = ("200px")
@@ -236,9 +288,6 @@ function setLocal() {
     newUserSetting.music = musicVar;
     newUserSetting.remember = remVar;
     newUserSetting.theme = themeVar;
-    console.log(`before user: ${userSettings}`)
     userSettings = newUserSetting;
-    console.log(`New User: ${newUserSetting}}`)
-    console.log(`after User: ${userSettings}}`)
     localStorage.setItem("userSettings", JSON.stringify(userSettings))
 }
