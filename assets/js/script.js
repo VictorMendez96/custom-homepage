@@ -1,5 +1,20 @@
 
-let userSettings = {};
+var userSettings = 
+    {
+    subreddit: "",
+    userLocation: "",
+    music: "",
+    remember: false,
+    theme: ""
+    };
+var newUserSetting = 
+    {
+    subreddit: "",
+    userLocation: "",
+    music: "",
+    remember: false,
+    theme: ""
+    };
 let bodyThemes = [
     // first element is background color, second element is reddit card color, third is font color, fourth is the button color 
     ["DFD6A7", "F7B05B", "1F1300", "AF9B46"], //sand
@@ -9,7 +24,8 @@ let bodyThemes = [
     ["2E2E2E", "5A5A5A", "FFFFFF", "383838"], //dark
     ["FFFFFF", "FFFFFF", "000000", "FFFFFF"] //light
 ]
-let musicVar = "";let redditVar = 0;let locVar = 0;let remVar =0; let theme = [];
+
+let musicVar = "";let redditVar = "";let locVar = "";let remVar =""; let theme = [];
 let redditHolder = document.getElementById("reddit");
 
 let setPage = () => {
@@ -17,6 +33,7 @@ let setPage = () => {
     fetchPosts()
     setTheme()
     setMusic()
+    setLocal()
 }
 
 const ACCESS_KEY="zUKzVL4c5dObj5yu1C3ByefuPOrEwxcejeM0DtyoccA"
@@ -24,7 +41,8 @@ const URL=`https://api.unsplash.com/photos/?client_id=${ACCESS_KEY}`
 async function getImages(url){
  const response=await fetch(url)
  const data=await response.json()
-//  console.log(data)
+ console.log("unsplash:")
+ console.log(data)
 }
 
 // Begin reddit API
@@ -35,7 +53,8 @@ async function getImages(url){
         // - exempt NSFW posts
         
         function fetchPosts() {
-            var popular = `https://www.reddit.com/r/popular/hot.json`
+            var popular = `https://www.reddit.com/r/${redditVar}/hot.json`
+            console.log(popular)
             //empty container on new request
             document.getElementById("reddit").innerHTML = ""
             
@@ -83,13 +102,11 @@ async function getImages(url){
             } else {
                 thumbnail.style.height = ("200px")
             }
-            
             // sets post title to the card content
             // ================================
             var cardContent = document.createElement("div")
             cardContent.classList.add("card-content")
             cardContent.style.fontSize = "20px"
-            
             // sets the subreddit name to the title of the card
             // ================================
             var subreddit = object.data.children[i].data.subreddit_name_prefixed
@@ -97,7 +114,6 @@ async function getImages(url){
             cardTitle.classList.add("card-title")
             cardTitle.style.fontSize = "20px"
             cardTitle.textContent = subreddit
-            
             // creates anchor tag for link
             var a = document.createElement("a")
             var link = document.createTextNode(urlSrc)
@@ -106,7 +122,6 @@ async function getImages(url){
             a.href = urlSrc
             a.appendChild(link)
             contentCard.append(a)
-
             // Appends items to the Card
             // ================================================
             cardImgEl.append(thumbnail)
@@ -114,19 +129,17 @@ async function getImages(url){
             cardContent.append(title)
             contentCard.append(cardContent)
             contentCard.append(thumbnail)
-            
-           
-            
-            
             document.getElementById("reddit").append(contentCard)
-            
-            
         } })
     }
 
 // Begin 1st opening function
 function checkCustom() {
     userSettings = JSON.parse(localStorage.getItem("userSettings"));
+    if (userSettings == null) {
+        document.getElementById("userButton").textContent = "Click me to begin!"
+        return
+    }
     if (userSettings.remember != false) {
         console.log("made from past")
         console.log(userSettings)
@@ -145,12 +158,10 @@ function checkCustom() {
 // Get user preferences
 function setCustom() {
     document.getElementById("content").setAttribute("class","")
-    localStorage.setItem("userSettings", JSON.stringify(userSettings))
     document.getElementById("userButton").textContent = "Change User Settings"
     theme = bodyThemes[themeVar];
     setPage()
 }
-
 
 let clicked = () => {
     musicVar = document.querySelector('#musicVariable').value;
@@ -158,12 +169,6 @@ let clicked = () => {
     locVar = document.querySelector('#locationVariable').value;
     remVar = document.querySelector('#remember').checked;
     themeVar = document.querySelector('#themeVariable').value;
-
-    // console.log("LocVar: "+locVar);
-    // console.log("MusicVar: "+musicVar);
-    // console.log("RedditVar: "+redditVar);
-    //console.log("ThemeVar: "+themeVar);
-    // console.log("Remember: "+remVar)
     
     if (locVar == "" || musicVar == "" || redditVar == "") {
         console.log("blank input")
@@ -172,11 +177,6 @@ let clicked = () => {
     } else {
         document.getElementById("errorDiv").setAttribute("class","hide")
         document.getElementById("content").setAttribute("class","")
-        userSettings.subreddit = redditVar;
-        userSettings.userLocation = locVar;
-        userSettings.music = musicVar;
-        userSettings.remember = remVar;
-        userSettings.theme = themeVar;
         setCustom()
     }
 }
@@ -226,14 +226,19 @@ function setTheme() {
     let bodyVar = document.getElementById("body");
     let button = document.getElementById("userButton")
     // set variables
-    console.log("theme: "+theme)
-    // background color
-    // font color
-    // card colors
-
-
     bodyVar.setAttribute("style", `background-color: #${theme[0]}; color:#${theme[2]}`)
     button.setAttribute("style", `background-color: #${theme[3]}; color:#${theme[2]}`)
-    console.log("set color")
 }
 
+function setLocal() {
+    newUserSetting.subreddit = redditVar;
+    newUserSetting.userLocation = locVar;
+    newUserSetting.music = musicVar;
+    newUserSetting.remember = remVar;
+    newUserSetting.theme = themeVar;
+    console.log(`before user: ${userSettings}`)
+    userSettings = newUserSetting;
+    console.log(`New User: ${newUserSetting}}`)
+    console.log(`after User: ${userSettings}}`)
+    localStorage.setItem("userSettings", JSON.stringify(userSettings))
+}
