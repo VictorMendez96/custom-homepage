@@ -222,7 +222,9 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(elems)
 });
 
+//Create setMusic function to call when setPage is called
 function setMusic() {
+<<<<<<< HEAD
     var iheartplayer = document.getElementById('iheart');
     var station = document.createElement('iframe');
     station.width = "100%";
@@ -236,6 +238,22 @@ function setMusic() {
     } else {
         iheartplayer.appendChild(station)
     }
+=======
+  var iheartplayer = document.getElementById('iheart');
+  var station = document.createElement('iframe');
+  station.width = "100%";
+  station.height = "200";
+  station.frameborder = "0";
+  station.src = musicVar;
+  
+  //If else statement for Media player, create iframe, replace if one already exists
+  if (iheartplayer.hasChildNodes()) {
+      iheartplayer.removeChild(iheartplayer.lastChild)
+      iheartplayer.appendChild(station)
+  } else {
+    iheartplayer.appendChild(station)
+  }
+>>>>>>> b53e45a3db77d22ad71a94a2486ac6adf4c96075
 };
 
 checkCustom()
