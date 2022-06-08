@@ -120,7 +120,7 @@ function fetchPosts() {
                 return response.json()
             })
             .then(function (object) {
-                
+                console.log(object)
                 for (let i=0; i < 25; i++) {
                     var urlSrc = object.data.children[i].data.url
                     var title = object.data.children[i].data.title
@@ -152,7 +152,7 @@ function fetchPosts() {
                     cardImgEl.classList.add("card-image")
                     var thumbnail = document.createElement("img")
                     thumbnail.classList.add("card-image")
-                    thumbnail.setAttribute("src", object.data.children[i].data.thumbnail)
+                    thumbnail.setAttribute("src", object.data.children[i].data.url)
                     thumbnail.setAttribute("alt", "Post Thumbnail")
                     thumbnail.setAttribute("class", "thumbnail")
             
@@ -160,9 +160,27 @@ function fetchPosts() {
             // sets different thumbnails for different types of posts
             // ================================
 
-            if(object.data.children[i].data.thumbnail === "self" || object.data.children[i].data.thumbnail === "default") {
+            if(object.data.children[i].data.domain === "i.redd.it") {
+                thumbnail.setAttribute("src", object.data.children[i].data.url)
+            } else {
                 thumbnail.setAttribute("src", "assets/img/reddit_logo_horizontal_on_orangered.png")
-            }   
+            }
+
+            //Creates video element if the post is a video 
+            if(object.data.children[i].data.post_hint === "hosted:video") {
+                var video =  document.createElement("video")
+                video.setAttribute("class", "video")
+                video.src = object.data.children[i].data.media.reddit_video.fallback_url
+                video.autoplay = false
+                video.controls = true
+                video.muted = false
+                thumbnail = video
+            } 
+             
+            
+            
+                
+                
                  
             // sets post title to the card content
             // ================================
@@ -177,7 +195,7 @@ function fetchPosts() {
             var cardTitle = document.createElement("div")
             cardTitle.classList.add("card-title")
             cardTitle.textContent = subreddit
-            cardTitle.setAttribute("class", "card-title")
+            
             
             
             // creates anchor tag for link

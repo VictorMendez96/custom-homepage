@@ -93,19 +93,39 @@ font-size: 20px;
     margin:4px
 }
 
+.reddit-card {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
 .thumbnail {
-    max-width: 495px
+    max-width: 495px;
+    margin: auto
+    
+}
+
+
+    
+.video {
+    max-width: 495px;
+    margin: auto
 }
 /* Changes cursor to a pointer when hovering over the reddi-card */
 .reddit-card {
     cursor: pointer;
 }
+.card-content {
+    font-size: 24px;
+}
+
+
 
 /* Media queries for background image and thumbnails*/
 @media screen and (max-width : 1600px) {
     .thumbnail {
         width: 200px
     }
+    
 }
 
 @media screen and (max-width: 1254px) {
@@ -115,9 +135,7 @@ font-size: 20px;
     .card-content {
         font-size: 20px;
     }
-    .card-title {
-        font-size: 16px;
-    }
+   
 }
 
 @media screen and (max-width :809px) {
