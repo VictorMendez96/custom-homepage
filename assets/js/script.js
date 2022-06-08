@@ -133,6 +133,10 @@ function fetchPosts() {
                     // ================================================
                     var contentCard = document.createElement("div")
                     contentCard.classList.add("card")
+                    if (object.data.children[i].data.thumbnail === "nsfw") {
+                        contentCard.classList.add("style", "hide")
+                    }
+                    contentCard.classList.add("hoverable")
                     let cardCol = `#${theme[1]}`
                     contentCard.setAttribute("style", `background-color: ${cardCol}`)
                     contentCard.addEventListener("click", function (e) {
@@ -142,7 +146,7 @@ function fetchPosts() {
                     if (object.data.children[i].data.thumbnail === "nsfw") {
                         contentCard.setAttribute("style", "hide" )
                     }
-                    
+                  
                     // creates image div and attributes
                     // ================================
                     var cardImgEl = document.createElement("div")
@@ -160,11 +164,23 @@ function fetchPosts() {
                 thumbnail.setAttribute("src", "assets/img/reddit_logo_horizontal_on_orangered.png")
             } else if(object.data.children[i].data.thumbnail === "nsfw") {
                 thumbnail.setAttribute("src", "assets/img/interstitial-image-over18.png")
-                thumbnail.style.height = ("160px")
+                thumbnail.style.width = ("160px")
             } else {
-
-                thumbnail.style.height = ("200px")
+                thumbnail.style.width = ("200px")
             }
+
+            // Setting Imgage size based on screen size
+
+            var medWindowSize = window.matchMedia("(max-width: 1254px)")
+            var smallerWindowSize = window.matchMedia("(max-width: 798px)")
+            if(medWindowSize.matches) {
+                thumbnail.style.width = ("100px")
+            } 
+             if (smallerWindowSize.matches) {
+                thumbnail.style.width = ("50px")
+            }
+
+
             
             // sets post title to the card content
             // ================================
@@ -304,7 +320,3 @@ function setLocal() {
     userSettings = newUserSetting;
     localStorage.setItem("userSettings", JSON.stringify(userSettings))
 }
-<<<<<<< HEAD
-console.log(userSettings.theme)
-=======
->>>>>>> cf66f58c5c69ae879d752ad5818bf53c1a067761
