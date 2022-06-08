@@ -4,6 +4,19 @@
     
 }
 
+.gsc-control-cse.gsc-control-cse-en {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0
+    
+}
+
+.gsc-search-button {
+    padding: 0;
+}
+
+
+
 #reddit {
     overflow: auto; 
     max-height: 43rem;
@@ -27,7 +40,9 @@
     box-shadow: 10px 0px 10px rgb(0, 0, 0);
     border-radius: 4px;
     margin-top: 0%;
-    margin-bottom: 18px;
+    max-height: 575px;
+    
+    
 }
 
 #userButton {
@@ -49,6 +64,7 @@ label {
 
 #iheart {
     box-shadow: 10px 10px 10px rgb(0, 0, 0);
+    margin-top: 100px
 }
 
 #searchGoogle {
@@ -75,4 +91,84 @@ font-size: 20px;
 }
 .description{
     margin:4px
+}
+
+.thumbnail {
+    max-width: 495px
+}
+/* Changes cursor to a pointer when hovering over the reddi-card */
+.reddit-card {
+    cursor: pointer;
+}
+
+/* Media queries for background image and thumbnails*/
+@media screen and (max-width : 1600px) {
+    .thumbnail {
+        width: 200px
+    }
+}
+
+@media screen and (max-width: 1254px) {
+    .thumbnail {
+        width: 200px
+    }
+    .card-content {
+        font-size: 20px;
+    }
+    .card-title {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width :809px) {
+    #pictures img {
+        width: 450px
+    }
+}
+@media screen and (max-width :705px) {
+    #pictures img {
+        width: 350px
+    }
+}
+
+@media screen and (max-width :619px) {
+    #pictures img {
+        width: 300px
+    }
+}
+
+@media screen and (max-width : 544px) {
+    .thumbnail {
+        width: 175px;
+    }
+    .card-content {
+        font-size: 16px
+    }
+    .card-title {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width :535px) {
+    #pictures img {
+        width: 250px
+    }
+}
+
+@media screen and (max-width : 475px) {
+    .thumbnail {
+        width: 150px
+    }
+}
+
+@media screen and (max-width :449px) {
+    #pictures img {
+        width: 200px
+    }
+}
+
+@media screen and (max-width : 418px) {
+    .thumbnail {
+        width: 125px
+    }
 }
