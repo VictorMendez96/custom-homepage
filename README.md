@@ -2,6 +2,7 @@
 
 Project Title: 
 Custom Homepage
+
 Project Description:
 This is a custom homepage the user can cater to their own interest. The user is prompted to click a button to adjust settings and preferences such as location, timezone, music preference, news preferences, and if the settings will be remembered/auto populated upon reopening of the homepage.
 The homepage is formatted using Materialize CSS framework. 
@@ -27,7 +28,10 @@ THEN they are presented with a google search bar
 THEN they are presented with a local time and weather  
 
 <img src = "./assets/img/Initial-landing-page.png">
-<img src = "./assets/img/Initial-user-input.png">
+
+<img src = "./assets/img/User-input.png">
+
+<img src = "./assets/img/Example-homepage.png">
 
 Deployment Link : https://victormendez96.github.io/custom-homepage/
 
