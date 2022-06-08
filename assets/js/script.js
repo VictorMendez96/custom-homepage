@@ -41,7 +41,6 @@ const URL=`https://api.unsplash.com/photos/?client_id=${ACCESS_KEY}`
 async function getImages(url){
  const response=await fetch(url)
  const data=await response.json()
- console.log(data)
  //build pic array
  let buildPicArray = (data) => {
      for (let i = 0; i < data.length; i++) {
@@ -50,12 +49,10 @@ async function getImages(url){
         let picURL = picObj.urls.small
         //get artist info
         let picArtist = picObj.user.name;
-        console.log(picArtist)
         let authorLink = picObj.links.html;
         let temp = [picURL, picArtist, authorLink]
         picArray[i] = temp;
      }
-
  }
 
  let buildPicCard = () => {
@@ -66,27 +63,29 @@ async function getImages(url){
     //clear holder
     picHolder.innerHTML = "";
     //  make whole div clickable element
-    let picLink = document.createElement("span")
-    picLink.innerHTML= `<a href="${newPic[2]}" target="_blank"> </a>`
-    //make image element
+    let picLink = document.createElement("a")
+    picLink.setAttribute("href", newPic[02])
+    picLink.setAttribute("class", "container")
+    picLink.setAttribute("target", "_blank")
+    //make image elements
     let picImg = document.createElement("img")
     picImg.setAttribute("src", newPic[0])
     let picFacts = document.createElement("p")
-    picFacts.textContent = `Image Courtesy of ${newPic[1]} on Unsplash.`
+    picFacts.innerHTML =  `Image Courtesy of ${newPic[1]} on Unsplash. <br> Click picture to see more on Unsplash.com!`
     picFacts.setAttribute("class", "center")
+
+    picLink.appendChild(picImg)
     picHolder.append(picFacts)
     picHolder.append(picLink)
-    picHolder.append(picImg)
-    
+      
 }
 
 function countdown () {
     let timerInterval = setTimeout(function (){
         buildPicCard()
         countdown()
-    }, 10000);
+    }, 15000);
     }
-
 
 function buildPics() {
     buildPicArray(data);
@@ -96,11 +95,6 @@ function buildPics() {
 
 buildPics()
 }
-
-
-
-
-
 
 // Begin reddit API
 // =================================================================
@@ -115,33 +109,35 @@ function fetchPosts() {
     //empty container on new request
     document.getElementById("reddit").innerHTML = ""
     
-    
-    
-    
     fetch(popular)
     .then( function (response) {
         return response.json()
     })
     .then(function (object) {
-        console.log(object)
-        
-
         for (let i=0; i < 25; i++) {
             var urlSrc = object.data.children[i].data.url
             var title = object.data.children[i].data.title
             
-            
-            // Creates card contianer and sets card attribute
-            // ================================================
-            var contentCard = document.createElement("div")
-            contentCard.classList.add("card")
-            contentCard.classList.add("hoverable")
-            let cardCol = `#${theme[1]}`
-            contentCard.setAttribute("style", `background-color: ${cardCol}`)
-            contentCard.addEventListener("click", function (e) {
+            fetch(popular)
+            .then( function (response) {
+                return response.json()
+            })
+            .then(function (object) {
+                
+                for (let i=0; i < 25; i++) {
+                    var urlSrc = object.data.children[i].data.url
+                    var title = object.data.children[i].data.title
+                    
+                    
+                    // Creates card contianer and sets card attribute
+                    // ================================================
+                    var contentCard = document.createElement("div")
+                    contentCard.classList.add("card")
+                    let cardCol = `#${theme[1]}`
+                    contentCard.setAttribute("style", `background-color: ${cardCol}`)
+                    contentCard.addEventListener("click", function (e) {
                         const eventTarget = e.currentTarget.firstChild.textContent
                         window.open(eventTarget)
-                        
                     })           
                     if (object.data.children[i].data.thumbnail === "nsfw") {
                         contentCard.setAttribute("style", "hide" )
@@ -203,29 +199,25 @@ function fetchPosts() {
             contentCard.append(thumbnail)
             document.getElementById("reddit").append(contentCard)
         } })
+    }})}
+
+// Begin 1st opening function
+function checkCustom() {
+    userSettings = JSON.parse(localStorage.getItem("userSettings"));
+    if (userSettings == null) {
+        document.getElementById("userButton").textContent = "Click me to begin!"
+        return
     }
-    
-    
-    
-    // Begin 1st opening function
-    function checkCustom() {
-        userSettings = JSON.parse(localStorage.getItem("userSettings"));
-        if (userSettings == null) {
-            document.getElementById("userButton").textContent = "Click me to begin!"
-            return
-        }
-        if (userSettings.remember != false) {
-            console.log("made from past")
-            console.log(userSettings)
-            redditVar = userSettings.subreddit;
-            locVar = userSettings.userLocation;
-            musicVar = userSettings.music;
-            remVar = userSettings.remember;
-            themeVar = userSettings.theme;
+    if (userSettings.remember != false) {
+        redditVar = userSettings.subreddit;
+        locVar = userSettings.userLocation;
+        musicVar = userSettings.music;
+        remVar = userSettings.remember;
+        themeVar = userSettings.theme;
+
         setCustom()
     } else {
         document.getElementById("userButton").textContent = "Click me to begin!"
-        console.log("Nothing Stored")
     }    
 }
 
@@ -245,7 +237,6 @@ let clicked = () => {
     themeVar = document.querySelector('#themeVariable').value;
     
     if (locVar == "" || musicVar == "" || redditVar == "") {
-        console.log("blank input")
         document.getElementById("errorDiv").setAttribute("class","center")
         document.getElementById("content").setAttribute("class","hide")
     } else {
@@ -264,18 +255,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var instance = M.Modal.getInstance(singleModalElem);
     
     let openModal = () => {
-        console.log("Modal Clicked")
         instance.open();
     }
-    
-});
 
-document.addEventListener('DOMContentLoaded', function() {
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems);
-    
-    console.log(elems)
-});
+  });
+
 
 //Create setMusic function to call when setPage is called
 function setMusic() {
@@ -315,4 +304,7 @@ function setLocal() {
     userSettings = newUserSetting;
     localStorage.setItem("userSettings", JSON.stringify(userSettings))
 }
+<<<<<<< HEAD
 console.log(userSettings.theme)
+=======
+>>>>>>> cf66f58c5c69ae879d752ad5818bf53c1a067761

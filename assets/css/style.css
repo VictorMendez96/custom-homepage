@@ -6,20 +6,34 @@
 
 #reddit {
     overflow: auto; 
-    max-height: 40rem;
+    max-height: 43rem;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
 
 #pictures {
     overflow: hidden; 
-    max-height: 40rem;
+    max-height: 43rem;
+}
+#pictures p{
+    margin-bottom: 0.5%;
+    margin-top: 1%;
+    color: black;
+    font-weight: 500;
 }
 
 #pictures img{
-    align-items: center;
+    display: block;
+    margin: auto;
+    box-shadow: 10px 0px 10px rgb(0, 0, 0);
+    border-radius: 4px;
+    margin-top: 0%;
+    margin-bottom: 18px;
 }
 
 #userButton {
-   margin-left: 40%;
+    display: block;
+    margin: auto;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
 
 label {
@@ -30,5 +44,17 @@ label {
 .inst {
     font: 150%;
     font-weight: bold;
-    color: black;
+    color: rgb(0, 0, 0);
+}
+
+#iheart {
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+
+#searchGoogle {
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+
+#weatherTime {
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
