@@ -58,3 +58,21 @@ label {
 #weatherTime {
     box-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
+.weather-info-warapper{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 20;
+padding-bottom: 30px;
+}
+.meata-data{
+font-size: 20px;
+}
+
+.city-name {
+    margin: 4px ;
+}
+.description{
+    margin:4px
+}
