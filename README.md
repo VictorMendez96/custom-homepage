@@ -3,13 +3,15 @@
 Project Title: 
 Custom Homepage
 
-Project Description:
+## Project Description:
+
 This is a custom homepage the user can cater to their own interests. 
 Upon intial visit to the site, the user is prompted to click a button to adjust settings and preferences such as location, timezone, music preference, news preferences, and if the settings will be remembered/auto populated upon reopening of the homepage.
 The homepage is formatted using the Materialize CSS framework.  
 <img src = "./assets/img/Example-homepage.png">  
 
-Functionality:
+## Functionality:
+
 - Formatted and built using JS and Materialize CSS
 - User presented with clear call to action button on initial load of page  
     <img src = "./assets/img/Initial-landing-page.png">  
@@ -56,7 +58,18 @@ Functionality:
 - If inputs are missing an error appears prompting the user to re-input their information  
     <img src = "./assets/img/error.png">  
 
+## Github
 
 Deployment Link : https://victormendez96.github.io/custom-homepage/
 
 Github Link : https://github.com/VictorMendez96/custom-homepage
+
+## Contributors
+
+Brisco Arechederra: https://github.com/brisco13
+
+Brandon Elliott: https://github.com/brandonelliott0530 
+
+Victor Mendez: https://github.com/VictorMendez96
+
+Mohamed Lenaya: https://github.com/Mlenaya
