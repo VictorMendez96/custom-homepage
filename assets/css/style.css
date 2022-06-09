@@ -4,6 +4,7 @@
     
 }
 
+<<<<<<< HEAD
 /* .gsc-control-cse.gsc-control-cse-en {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -17,6 +18,8 @@
 
 
 
+=======
+>>>>>>> 4a481d2bb4938f16af1953b018d92ac8006ee451
 #reddit {
     overflow: auto; 
     max-height: 43rem;
@@ -40,9 +43,7 @@
     box-shadow: 10px 0px 10px rgb(0, 0, 0);
     border-radius: 4px;
     margin-top: 0%;
-    max-height: 575px;
-    
-    
+    margin-bottom: 18px;
 }
 
 #userButton {
@@ -64,7 +65,6 @@ label {
 
 #iheart {
     box-shadow: 10px 10px 10px rgb(0, 0, 0);
-    margin-top: 100px
 }
 
 #searchGoogle {
@@ -74,6 +74,9 @@ label {
 #weatherTime {
     box-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
+
+.modal-content h4 {color:black;}
+
 .weather-info-warapper{
 display: flex;
 flex-direction: column;
