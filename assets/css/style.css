@@ -6,11 +6,34 @@
 
 #reddit {
     overflow: auto; 
-    max-height: 30rem;
+    max-height: 43rem;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+
+#pictures {
+    overflow: hidden; 
+    max-height: 43rem;
+}
+#pictures p{
+    margin-bottom: 0.5%;
+    margin-top: 1%;
+    color: black;
+    font-weight: 500;
+}
+
+#pictures img{
+    display: block;
+    margin: auto;
+    box-shadow: 10px 0px 10px rgb(0, 0, 0);
+    border-radius: 4px;
+    margin-top: 0%;
+    margin-bottom: 18px;
 }
 
 #userButton {
-   margin-left: 40%;
+    display: block;
+    margin: auto;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
 
 label {
@@ -21,5 +44,136 @@ label {
 .inst {
     font: 150%;
     font-weight: bold;
-    color: black;
+    color: rgb(0, 0, 0);
+}
+
+#iheart {
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+
+#searchGoogle {
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+
+#weatherTime {
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+
+.modal-content h4 {color:black;}
+
+.weather-info-warapper{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 20;
+padding-bottom: 30px;
+}
+.meata-data{
+font-size: 20px;
+}
+
+.city-name {
+    margin: 4px ;
+}
+.description{
+    margin:4px
+}
+
+.reddit-card {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+.thumbnail {
+    max-width: 495px;
+    margin: auto
+    
+}
+
+
+    /*video styling  */
+.video {
+    max-width: 495px;
+    margin: auto
+}
+/* Changes cursor to a pointer when hovering over the reddi-card */
+.reddit-card {
+    cursor: pointer;
+}
+.card-content {
+    font-size: 24px;
+}
+
+
+
+/* Media queries for background image and thumbnails*/
+@media screen and (max-width : 1600px) {
+    .thumbnail {
+        width: 200px
+    }
+    
+}
+
+@media screen and (max-width: 1254px) {
+    .thumbnail {
+        width: 200px
+    }
+    .card-content {
+        font-size: 20px;
+    }
+   
+}
+
+@media screen and (max-width :809px) {
+    #pictures img {
+        width: 450px
+    }
+}
+@media screen and (max-width :705px) {
+    #pictures img {
+        width: 350px
+    }
+}
+
+@media screen and (max-width :619px) {
+    #pictures img {
+        width: 300px
+    }
+}
+
+@media screen and (max-width : 544px) {
+    .thumbnail {
+        width: 175px;
+    }
+    .card-content {
+        font-size: 16px
+    }
+    .card-title {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width :535px) {
+    #pictures img {
+        width: 250px
+    }
+}
+
+@media screen and (max-width : 475px) {
+    .thumbnail {
+        width: 150px
+    }
+}
+
+@media screen and (max-width :449px) {
+    #pictures img {
+        width: 200px
+    }
+}
+
+@media screen and (max-width : 418px) {
+    .thumbnail {
+        width: 125px
+    }
 }
