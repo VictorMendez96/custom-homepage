@@ -4,34 +4,58 @@ Project Title:
 Custom Homepage
 
 Project Description:
-This is a custom homepage the user can cater to their own interest. The user is prompted to click a button to adjust settings and preferences such as location, timezone, music preference, news preferences, and if the settings will be remembered/auto populated upon reopening of the homepage.
-The homepage is formatted using Materialize CSS framework. 
+This is a custom homepage the user can cater to their own interests. 
+Upon intial visit to the site, the user is prompted to click a button to adjust settings and preferences such as location, timezone, music preference, news preferences, and if the settings will be remembered/auto populated upon reopening of the homepage.
+The homepage is formatted using the Materialize CSS framework.  
+<img src = "./assets/img/Example-homepage.png">  
 
-Pulling weather information from OpenWeather, the user's city is input on the first connection to the homepage with the ability to update as needed.  
-A Google search widget is added for user conveinence.  
-Similarly, the news widget is populated from the reddit API (with a filter on NSFW content)  
-Additionally, music from iHeartRadio is embedded to the homepage.  
-Additionally there is a picture slideshow for an aesthetic homepage a user can arrive to upon opening their browser.  
+Functionality:
+- Formatted and built using JS and Materialize CSS
+- User presented with clear call to action button on initial load of page  
+    <img src = "./assets/img/Initial-landing-page.png">  
+    
+- All user input may be updated after initially set
+    - Post input  
+      <img src = "./assets/img/Initlal-user-input.png">
+    - Pre-input  
+      <img src = "./assets/img/User-input.png">  
 
-User Story:  
-GIVEN user wants a customizable homescreen   
-WHEN user initially arrives to page  
-THEN user is prompted with a series of questions for customization  
-THEN user's preferences stored in local storage so repeat entry is not necessary  
-WHEN user wants to change a previous choice  
-THEN they may easily do so  
-WHEN user uses home page  
-THEN they are presented with a picture slideshow  
-THEN they are presented with a news pane  
-THEN they are presented with a radio station  
-THEN they are presented with a google search bar  
-THEN they are presented with a local time and weather  
+- Weather (OpenWeather API): 
+    - Location
+    - weather summary
+    - current temp 
+    - current wind speed 
+    - current humidity  
+    <img src = "./assets/img/weather.png">  
 
-<img src = "./assets/img/Initial-landing-page.png">
+- Google search widget (Google Search Widget embeded)
+    - query creates modal over homepage with results  
+    <img src = "./assets/img/google.png">  
 
-<img src = "./assets/img/User-input.png">
+- Reddit with subreddit selection (Reddit API): 
+    - nsfw filter
+    - image preview
+    - videos are playable from homepage on card
+    - click opens link in new page  
+    <img src = "./assets/img/reddit.png">  
 
-<img src = "./assets/img/Example-homepage.png">
+- Picture slide show (Unsplash API)
+    - Pictures rotate on a timer
+    - Pictures credit artist
+    - Upon click, a new window opens to show artist/unsplash page.  
+    <img src = "./assets/img/unsplash.png">  
+
+- Music (iHeartRadio Online Radio embeded)
+    - User selects radio station to tune into
+    - Widget has EQ vizualizer
+    - Widget allows user to share station/song information
+    - User can click on radio show icon and new tab will open navigating to the radio show's page  
+    <img src = "./assets/img/music.png">  
+
+- User can select theme to their homepage and an assortment of colors are available
+- If inputs are missing an error appears prompting the user to re-input their information  
+    <img src = "./assets/img/error.png">  
+
 
 Deployment Link : https://victormendez96.github.io/custom-homepage/
 

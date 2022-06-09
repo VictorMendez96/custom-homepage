@@ -58,6 +58,9 @@ label {
 #weatherTime {
     box-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
+
+.modal-content h4 {color:black;}
+
 .weather-info-warapper{
 display: flex;
 flex-direction: column;
@@ -75,7 +78,6 @@ font-size: 20px;
 }
 .description{
     margin:4px
-<<<<<<< HEAD
 }
 
 .reddit-card {
@@ -174,6 +176,4 @@ font-size: 20px;
     .thumbnail {
         width: 125px
     }
-=======
->>>>>>> parent of ac1feae (added media queries, comments and formatting)
 }

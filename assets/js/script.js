@@ -129,7 +129,6 @@ function fetchPosts() {
                 return response.json()
             })
             .then(function (object) {
-                console.log(object)
                 for (let i=0; i < 25; i++) {
                     var urlSrc = object.data.children[i].data.url
                     var title = object.data.children[i].data.title
@@ -186,11 +185,7 @@ function fetchPosts() {
                 thumbnail = video
             } 
              
-            
-            
-                
-                
-                 
+ 
             // sets post title to the card content
             // ================================
             var cardContent = document.createElement("div")
